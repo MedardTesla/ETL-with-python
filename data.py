@@ -37,11 +37,11 @@ class COINAPI:
         end_time = date.today().strftime("%Y-%m-%d")
         
         # Create URL
-        url = ("https://rest.coinapi.io/v1/"
-            f"exchangerate/{asset}/"
-            "history?period_id=1DAY&"
-            f"time_start={start_time}T00:00:00&"
-            f"time_end={end_time}T00:00:00")
+        url = ('https://rest.coinapi.io/v1/'
+               f'exchangerate/{asset}/'
+               f'history?period_id=1MIN&'
+               f'time_start={start_time}T00:00:00&'
+               f'time_end={end_time}T00:00:00')
         
         headers = {'X-CoinAPI-Key' : f'{self.__api_key}'}
         
