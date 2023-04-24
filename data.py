@@ -62,8 +62,7 @@ class COINAPI:
         # remove "_rate" into columns
         df.columns = [c.split("_")[-1] for c in df.columns]
 
-        #return DataFrme
-        
+        #return DataFrme   
         return df
         
 
@@ -73,8 +72,42 @@ class SQLRepository:
     def __init__(self, connection) -> None:
         self.connection = connection
         
-    def insert_table(self, table_name):
+    def insert_table(self, table_name, records, if_exists="fail"):
+        """ insert dataframe into sqlite database as table 
+
+        Parameters
+        ----------
+        table_name: str
+        records: pd.DataFrame
+        if_exists: str, optional
+        
+            - 'fail': Raise a ValueError.
+            - 'replace': Drop the table before inserting new values.
+            - 'append': Insert new values to the existing table.
+
+            Dafault: 'fail'
+        Returns
+        -------
+        dict
+            - 'transaction_successful', followed by bool
+            - 'records_inserted', followed by int
+        """
         pass
     
     def read_table(self, table_name, limit=None):
+        """read table from sqlite database
+
+        Parameters
+        ----------
+        table_name: str
+        limit: int, None, optional
+            Number of most recent records to retrieve. If `None`, all
+            records are retrieved. By default, `None`.
+
+        Returns
+        -------
+        pd.dataFrame
+            Index is DatetimeIndex "date". Columns are 'open', 'high',
+            'low', 'close', and 'volume'. All columns are numeric.
+        """
         pass
