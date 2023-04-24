@@ -92,7 +92,9 @@ class SQLRepository:
             - 'transaction_successful', followed by bool
             - 'records_inserted', followed by int
         """
-        pass
+        
+        n_inserted = records.to_sql(name=table_name, con=self.connection, if_exists=if_exists)
+        return {"transaction_successful": True, "records_inserted": n_inserted}
     
     def read_table(self, table_name, limit=None):
         """read table from sqlite database
