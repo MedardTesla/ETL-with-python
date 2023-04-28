@@ -13,7 +13,7 @@ import sqlite3
 
 
 class COINAPI:
-    def __init__(self, api_key=settings.coin_api_key) -> None:
+    def __init__(self, api_key=settings.coin_api_key):
         self.__api_key = api_key
         
     def get_daily(self, asset, output_size=100):
@@ -46,7 +46,7 @@ class COINAPI:
         headers = {'X-CoinAPI-Key' : f'{self.__api_key}'}
         
         # send call to  api
-        response = requests.get(url, headers)
+        response = requests.get(url, headers=headers)
         # extract json data
         json_data = response.json()
         # read data into dataframe
